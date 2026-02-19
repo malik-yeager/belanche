@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Define custom colors mapping to CSS variables */
+  --color-theme-bg: var(--bg-main);
+  --color-theme-surface: var(--bg-surface);
+  --color-theme-text: var(--text-main);
+  --color-theme-highlight: var(--text-highlight);
+  --color-theme-accent: var(--accent);
+  --color-theme-wave: var(--wave);
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Base Variables - Light Mode Default */
+:root {
+  /* User requested: #F5EFE6, #E8DFCA, #6D94C5, #CBDCEB */
+  --bg-main: #F5EFE6;
+  --bg-surface: #E8DFCA;
+  --text-main: #6D94C5;
+  /* Using blue as main text as requested */
+  --text-highlight: #6D94C5;
+  --accent: #CBDCEB;
+  --wave: #6D94C5;
+  /* Standard properties */
+  color-scheme: light;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Dark Mode Overrides */
+.dark {
+  /* User requested: #574964, #9F8383, #C8AAAA, #FFDAB3 */
+  --bg-main: #574964;
+  --bg-surface: #9F8383;
+  /* This is quite light for a surface in dark mode, but as requested */
+  --text-main: #FFDAB3;
+  --text-highlight: #C8AAAA;
+  --accent: #C8AAAA;
+  --wave: #3D3346;
+  color-scheme: dark;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* Global resets to ensure transition smoothness */
+body {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
