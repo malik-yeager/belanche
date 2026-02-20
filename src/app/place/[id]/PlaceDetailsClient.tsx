@@ -150,7 +150,7 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                                     <div className="absolute inset-0 bg-theme-highlight/20 rounded-full blur-md animate-pulse"></div>
                                     <div className="relative w-full h-full bg-theme-bg p-1 rounded-full overflow-hidden shadow-inner border-2 border-theme-surface">
                                         <img
-                                            src="/profile.png"
+                                            src="/profile.webp"
                                             alt="Shaik Malikbaba"
                                             className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-110"
                                         />

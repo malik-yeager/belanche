@@ -28,7 +28,7 @@ const TopBar: React.FC = () => {
                     {/* Logo / Brand */}
                     <div className="flex-shrink-0 flex items-center">
                         <Link href="/" className="flex items-center gap-2 text-xl font-bold transition-colors text-theme-highlight hover:opacity-80">
-                            <img src="/triplog.png" alt="Triplogs Logo" className="h-14 w-auto display-block object-contain" />
+                            <img src="/triplog.webp" alt="Triplogs Logo" className="h-14 w-auto display-block object-contain" />
                             <span>Triplogs</span>
                         </Link>
                     </div>

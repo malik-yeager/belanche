@@ -13,7 +13,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="w-full h-[50vh] p-4 relative group">
         <img
-          src="/world.jpg"
+          src="/world.webp"
           alt="World Map"
           className="w-full h-full object-cover object-top"
         />

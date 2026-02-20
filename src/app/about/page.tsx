@@ -19,7 +19,7 @@ export default function About() {
 
                     <div className="relative w-full max-w-lg aspect-[3/4] md:aspect-auto md:h-[80%] flex items-center justify-center p-8">
                         <img
-                            src="/profile.png"
+                            src="/profile.webp"
                             alt="Shaik Malikbaba"
                             className="w-full h-full object-cover rounded-2xl shadow-2xl grayscale-[20%] contrast-[1.05] hover:grayscale-0 transition-all duration-700"
                         />
