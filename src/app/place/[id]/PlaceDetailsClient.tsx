@@ -60,7 +60,7 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
 
                 {/* Content Area */}
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
-                    <div className="col-span-1 lg:col-span-3">
+                    <div className="col-span-1 lg:col-span-3 lg:border-r lg:border-theme-accent/30 lg:pr-12">
                         <div className="min-h-[400px]">
 
                             {activeTab === 'overview' && (
@@ -126,11 +126,13 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                             {activeTab === 'things' && (
                                 <div className="animate-fade-in">
                                     <h3 className="text-2xl font-bold mb-6 text-theme-text">Things to Take Care Of</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                         {place.thingsToTake.map((thing, idx) => (
-                                            <div key={idx} className="flex items-start p-4 bg-theme-surface text-theme-text rounded-xl border border-theme-accent/50 hover:shadow-md transition-shadow">
-                                                <span className="mr-3 text-xl bg-theme-accent/20 p-1.5 rounded-lg">⚠️</span>
-                                                <span className="font-medium mt-1">{thing}</span>
+                                            <div key={idx} className="flex items-start py-2 text-theme-text group">
+                                                <span className="mt-2 mr-4 flex-shrink-0 text-theme-highlight">
+                                                    <div className="w-2 h-2 rounded-full bg-theme-highlight"></div>
+                                                </span>
+                                                <span className="font-medium text-lg leading-relaxed">{thing}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -157,13 +159,18 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                                     </div>
                                 </div>
 
-                                <h4 className="text-2xl font-black text-theme-text mb-1">Shaik Malikbaba</h4>
-                                <p className="text-xs text-theme-highlight font-bold uppercase tracking-widest mb-4">Software Engineer</p>
+                                <h4 className="text-2xl font-black text-theme-text mb-1 flex items-center gap-2 justify-center">
+                                    Shaik
+                                    <em className="text-theme-highlight text-2xl not-italic font-serif italic font-light">
+                                        Malikbaba
+                                    </em>
+                                </h4>
+                                <p className="text-xs text-theme-text/50 font-mono tracking-[0.15em] mb-4">Software Engineer &nbsp;·&nbsp; Travel Writer</p>
 
                                 <div className="w-full h-px bg-theme-accent/20 mb-6"></div>
 
-                                <p className="text-theme-text/80 text-sm leading-relaxed mb-6 italic">
-                                    "Coding in Bangalore, traveling the world. documenting every step of the journey."
+                                <p className="text-theme-text/80 text-sm leading-relaxed mb-6 font-light">
+                                    I build <strong className="font-semibold text-theme-text">software that matters</strong> by day and chase sunsets across continents by heart. This is where both worlds meet — a space for code, curiosity, and the places that shape who I am.
                                 </p>
 
                                 <div className="flex justify-center gap-3">

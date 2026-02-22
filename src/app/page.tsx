@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="space-y-12">
       {/* Hero Section */}
-      <div className="w-full h-[50vh] p-4 relative group">
+      <div className="w-full h-[50vh] p-2 relative group">
         <img
           src="/world.webp"
           alt="World Map"
@@ -55,7 +55,7 @@ export default function Home() {
             <div className="bg-theme-surface rounded-2xl p-8 md:p-12 shadow-sm border border-theme-accent/30 flex flex-col md:flex-row items-center gap-8 md:gap-12 animate-fade-in">
               <div className="w-32 h-32 md:w-40 md:h-40 bg-theme-highlight/20 rounded-full flex-shrink-0 overflow-hidden shadow-lg border-4 border-theme-surface">
                 <img
-                  src="/profile.png"
+                  src="/profile.webp"
                   alt="Author"
                   className="w-full h-full object-cover"
                 />
@@ -63,7 +63,7 @@ export default function Home() {
               <div className="text-center md:text-left flex-1">
                 <h4 className="text-3xl font-black text-theme-text mb-2">Malik</h4>
                 <p className="text-sm text-theme-highlight font-bold uppercase tracking-widest mb-4">Explorer & Techie</p>
-                <p className="text-theme-text/80 text-lg leading-relaxed mb-6 max-w-2xl">
+                <p className="text-theme-text/80 text-lg leading-relaxed mb-6 max-w-7xl">
                   "Just a guy who loves code, coffee, and getting lost in new cities. Sharing the raw, messy, and beautiful moments of my travels. Join me as I discover the world one commit at a time."
                 </p>
                 <div className="flex justify-center md:justify-start gap-4">

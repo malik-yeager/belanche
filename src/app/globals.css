@@ -28,13 +28,15 @@
 
 /* Base Variables - Light Mode Default */
 :root {
-  /* User requested: #F5EFE6, #E8DFCA, #6D94C5, #CBDCEB */
+  /* Refined warm & calm */
   --bg-main: #F5EFE6;
   --bg-surface: #E8DFCA;
-  --text-main: #6D94C5;
+  --bg-topbar: #F5EFE6;
+  --text-main: #3A5F8A;
   --text-highlight: #6D94C5;
   --accent: #CBDCEB;
   --wave: #6D94C5;
+  --logo-color: #000000;
 
   /* Standard properties */
   color-scheme: light;
@@ -46,10 +48,12 @@
   /* User requested: #574964, #9F8383, #C8AAAA, #FFDAB3 */
   --bg-main: #574964;
   --bg-surface: #9F8383;
+  --bg-topbar: #574964;
   --text-main: #FFDAB3;
   --text-highlight: #C8AAAA;
   --accent: #C8AAAA;
   --wave: #3D3346;
+  --logo-color: #FFFFFF;
 
   color-scheme: dark;
 }

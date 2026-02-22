@@ -10,7 +10,7 @@ export default function Contact() {
             {/* Can add form or email link here later */}
             <div className="p-6 bg-theme-surface rounded-lg border border-theme-accent/30">
                 <p className="text-theme-text">
-                    Email: <a href="mailto:hello@triplogs.com" className="text-theme-highlight hover:underline">hello@triplogs.com</a>
+                    Email: <a href="mailto:hello@belanche.com" className="text-theme-highlight hover:underline">hello@belanche.com</a>
                 </p>
             </div>
         </div>
