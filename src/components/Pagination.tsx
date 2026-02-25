@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface PaginationProps {
     onPrevious?: () => void;
@@ -16,6 +17,8 @@ const Pagination: React.FC<PaginationProps> = ({
     hasPrevious = true,
     hasNext = true
 }) => {
+    const tBtn = useTranslations('Buttons');
+
     return (
         <>
             {/* Desktop: Absolute Center Left/Right */}
@@ -30,7 +33,7 @@ const Pagination: React.FC<PaginationProps> = ({
                                 ? 'hover:bg-theme-text hover:border-theme-text cursor-pointer'
                                 : 'opacity-30 cursor-not-allowed'
                             }`}
-                        aria-label="Previous Page"
+                        aria-label={tBtn('previous')}
                     >
                         <ChevronLeft className={`w-6 h-6 transition-colors duration-300 ${hasPrevious ? 'stroke-theme-text group-hover:stroke-theme-bg' : 'stroke-theme-text'}`} />
                     </button>
@@ -46,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({
                                 ? 'hover:bg-theme-text hover:border-theme-text cursor-pointer'
                                 : 'opacity-30 cursor-not-allowed'
                             }`}
-                        aria-label="Next Page"
+                        aria-label={tBtn('next')}
                     >
                         <ChevronRight className={`w-6 h-6 transition-colors duration-300 ${hasNext ? 'stroke-theme-text group-hover:stroke-theme-bg' : 'stroke-theme-text'}`} />
                     </button>
@@ -63,7 +66,7 @@ const Pagination: React.FC<PaginationProps> = ({
                             ? 'hover:bg-theme-text hover:border-theme-text cursor-pointer'
                             : 'opacity-30 cursor-not-allowed'
                         }`}
-                    aria-label="Previous Page"
+                    aria-label={tBtn('previous')}
                 >
                     <ChevronLeft className={`w-6 h-6 transition-colors duration-300 ${hasPrevious ? 'stroke-theme-text group-hover:stroke-theme-bg' : 'stroke-theme-text'}`} />
                 </button>
@@ -76,7 +79,7 @@ const Pagination: React.FC<PaginationProps> = ({
                             ? 'hover:bg-theme-text hover:border-theme-text cursor-pointer'
                             : 'opacity-30 cursor-not-allowed'
                         }`}
-                    aria-label="Next Page"
+                    aria-label={tBtn('next')}
                 >
                     <ChevronRight className={`w-6 h-6 transition-colors duration-300 ${hasNext ? 'stroke-theme-text group-hover:stroke-theme-bg' : 'stroke-theme-text'}`} />
                 </button>

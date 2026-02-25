@@ -2,11 +2,11 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { places } from '../../../data/mockData';
-import Tabs from '../../../components/Tabs';
+import { places } from '../../../../data/mockData';
+import Tabs from '../../../../components/Tabs';
 import { MapPin, ArrowLeft } from 'lucide-react';
 
-import type { Place } from '../../../data/mockData';
+import type { Place } from '../../../../data/mockData';
 
 const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, placeData }) => {
     const router = useRouter();

@@ -1,0 +1,61 @@
+{
+    "Navigation": {
+        "home": "Home",
+        "myTravels": "My Travels",
+        "aboutMe": "About Me"
+    },
+    "Homepage": {
+        "quote": "Not all those who wander are lost.",
+        "quoteAuthor": "J.R.R. Tolkien",
+        "curatedTravels": "Curated Travel Experiences",
+        "theManBehind": "The Man Behind the Miles",
+        "malik": "Malik",
+        "explorerTechie": "Explorer \u00B7 Techie \u00B7 Writer",
+        "aboutQuote1": "\"Just a guy who loves code, coffee, and getting lost in new cities. Sharing the raw, messy, and beautiful moments of my travels. Join me as I discover the world one commit at a time.\"",
+        "aboutQuote2": "Whether traversing the bustling streets of Tokyo or finding serenity in the Swiss Alps, I believe every journey writes a new function in the codebase of our lives. I build scalable software systems by day, and hunt for the world's best espresso by night."
+    },
+    "Travels": {
+        "title": "My Travels",
+        "tripType": "Trip Type: ",
+        "all": "All",
+        "noPlaces": "No places found in this category.",
+        "showMore": "Show More Travels"
+    },
+    "Buttons": {
+        "readMore": "Read More",
+        "next": "Next",
+        "previous": "Previous",
+        "followJourney": "Follow Journey",
+        "connect": "Connect",
+        "backToHome": "Back to Home"
+    },
+    "Newsletter": {
+        "title": "Never Miss a Journey",
+        "description": "Join me on my next adventure. Get travel guides, remote work tips, and photography inspiration delivered straight to your inbox.",
+        "placeholder": "Enter your email address",
+        "subscribe": "Subscribe"
+    },
+    "Language": {
+        "en": "English",
+        "hi": "Hindi",
+        "te": "Telugu"
+    },
+    "About": {
+        "softwareEngineerBangalore": "Software Engineer \u00B7 Bangalore \u00B7 2024",
+        "theAuthor": "The Author",
+        "malik": "Malik",
+        "softwareEngineerTravelWriter": "Software Engineer \u00B7 Travel Writer",
+        "introText": "I build software that matters by day and chase sunsets across continents by heart. This is where both worlds meet \u2014 a space for code, curiosity, and the places that shape who I am.",
+        "softwareThatMatters": "software that matters",
+        "bangaloreIndia": "Bangalore, India",
+        "theEngineerTitle": "The Engineer",
+        "engineerP1": "I am a 24-year-old software engineer based in Bangalore, where I spend my days architecting elegant solutions to complex problems. Technology isn't just my profession \u2014 it's the lens through which I understand the world.",
+        "engineerP2": "Every line of code is a decision. Every system design is a philosophy. I believe that the best software is invisible \u2014 it simply works, and works beautifully, without demanding attention.",
+        "theTravelerTitle": "The Traveler",
+        "travelerP1": "Beyond the screen, I am a seeker of real experiences. I realized early on that while code builds the virtual world, travel connects us to the living one. Every destination has rewired something in me.",
+        "travelQuote": "\"The world is a book and those who do not travel read only one page.\"",
+        "quoteAuthor": "\u2014 Saint Augustine",
+        "travelerP2": "This blog is a curated record of those journeys \u2014 where every destination carries a story and every photograph holds a moment I refused to let slip away. You just have to be still enough to listen.",
+        "footerText": "Thanks for stopping by and being part of my journey."
+    }
+}

@@ -7,32 +7,52 @@ import type { Place } from '../data/mockData';
 
 const tripsDirectory = path.join(process.cwd(), 'content/trips');
 
-export function getSortedTripsData(): Place[] {
+export function getSortedTripsData(locale: string = 'en'): Place[] {
     // Get file names under /content/trips
     if (!fs.existsSync(tripsDirectory)) {
         return [];
     }
 
     const fileNames = fs.readdirSync(tripsDirectory);
-    const allTripsData = fileNames.map((fileName) => {
-        // Remove ".md" from file name to get id
-        const id = fileName.replace(/\.md$/, '');
 
-        // Read markdown file as string
-        const fullPath = path.join(tripsDirectory, fileName);
+    // Create a Set of base IDs so we don't process variations of the same post uniquely
+    const allTripsData: Place[] = [];
+    const processedIds = new Set<string>();
+
+    fileNames.forEach((fileName) => {
+        // Only look at standard `.md` or explicit locale `.en.md` etc to extract the base ID
+        const idMatch = fileName.match(/^(.*?)(?:\.(?:en|hi|te))?\.md$/);
+        if (!idMatch) return;
+
+        const id = idMatch[1];
+        if (processedIds.has(id)) return;
+        processedIds.add(id);
+
+        // Determine which file to actually read based on locale fallback
+        let targetFileName = `${id}.${locale}.md`;
+        let fullPath = path.join(tripsDirectory, targetFileName);
+
+        // Fallback to English, then base .md if the exact locale file doesn't exist
+        if (!fs.existsSync(fullPath)) {
+            targetFileName = `${id}.en.md`;
+            fullPath = path.join(tripsDirectory, targetFileName);
+
+            if (!fs.existsSync(fullPath)) {
+                targetFileName = `${id}.md`;
+                fullPath = path.join(tripsDirectory, targetFileName);
+                if (!fs.existsSync(fullPath)) return; // Skip if no file exists at all
+            }
+        }
+
         const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-        // Use gray-matter to parse the post metadata section
         const matterResult = matter(fileContents);
 
-        // Combine the data with the id
-        return {
+        allTripsData.push({
             id,
             ...matterResult.data,
-        } as Place;
+        } as Place);
     });
 
-    // Sort trips by date if we had a date field, for now just return them
     return allTripsData;
 }
 
@@ -41,20 +61,30 @@ export function getAllTripIds() {
         return [];
     }
     const fileNames = fs.readdirSync(tripsDirectory);
-    return fileNames.map((fileName) => {
-        return {
-            params: {
-                id: fileName.replace(/\.md$/, ''),
-            },
-        };
+    const processedIds = new Set<string>();
+
+    fileNames.forEach(fileName => {
+        const idMatch = fileName.match(/^(.*?)(?:\.(?:en|hi|te))?\.md$/);
+        if (idMatch) processedIds.add(idMatch[1]);
     });
+
+    return Array.from(processedIds).map(id => ({
+        params: { id }
+    }));
 }
 
-export async function getTripData(id: string): Promise<Place & { contentHtml: string }> {
-    const fullPath = path.join(tripsDirectory, `${id}.md`);
+export async function getTripData(id: string, locale: string = 'en'): Promise<Place & { contentHtml: string }> {
+    let fullPath = path.join(tripsDirectory, `${id}.${locale}.md`);
 
+    // Fallback logic
     if (!fs.existsSync(fullPath)) {
-        throw new Error(`Trip not found: ${id}`);
+        fullPath = path.join(tripsDirectory, `${id}.en.md`);
+        if (!fs.existsSync(fullPath)) {
+            fullPath = path.join(tripsDirectory, `${id}.md`);
+            if (!fs.existsSync(fullPath)) {
+                throw new Error(`Trip not found: ${id}`);
+            }
+        }
     }
 
     const fileContents = fs.readFileSync(fullPath, 'utf8');

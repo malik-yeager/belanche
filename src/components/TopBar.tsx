@@ -2,16 +2,22 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { User, Map, Mail, Sun, Moon, Instagram, Twitter } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
+import { User, Map, Mail, Sun, Moon, Instagram, Twitter, Globe } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { TriplogSVG } from './TriplogSVG';
 
 const TopBar: React.FC = () => {
     const { theme, toggleTheme } = useTheme();
     const pathname = usePathname();
+    const router = useRouter();
+    const locale = useLocale();
+    const t = useTranslations('Navigation');
+    const tLang = useTranslations('Language');
     const [mounted, setMounted] = React.useState(false);
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [isLangMenuOpen, setIsLangMenuOpen] = React.useState(false);
     const [ripple, setRipple] = React.useState<{ x: number; y: number; id: number } | null>(null);
 
     React.useEffect(() => {
@@ -19,9 +25,16 @@ const TopBar: React.FC = () => {
     }, []);
 
     const navItems = [
-        { name: 'About Me', path: '/about', icon: <User size={18} /> },
-        { name: 'My Travels', path: '/travels', icon: <Map size={18} /> },
+        { name: t('aboutMe'), path: `/${locale}/about`, icon: <User size={18} /> },
+        { name: t('myTravels'), path: `/${locale}/travels`, icon: <Map size={18} /> },
     ];
+
+    const switchLocale = (newLocale: string) => {
+        // Replace current locale in pathname
+        const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+        router.push(newPath || `/${newLocale}`);
+        setIsLangMenuOpen(false);
+    };
 
     const handleLinkClick = (e: React.MouseEvent, closeMobile?: boolean) => {
         const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
@@ -39,7 +52,7 @@ const TopBar: React.FC = () => {
                 <div className="flex justify-between items-center h-20">
                     {/* Logo / Brand */}
                     <div className="flex-shrink-0 flex items-center">
-                        <Link href="/" className="flex items-center gap-2 text-xl font-bold transition-colors text-theme-highlight hover:opacity-80">
+                        <Link href={`/${locale}`} className="flex items-center gap-2 text-xl font-bold transition-colors text-theme-highlight hover:opacity-80">
                             <img src="/triplog.png" alt="Triplog" className="h-40 w-auto" />
                         </Link>
                     </div>
@@ -116,6 +129,44 @@ const TopBar: React.FC = () => {
                                 theme === 'light' ? <Moon size={20} /> : <Sun size={20} />
                             )}
                         </button>
+
+                        {/* Language Switcher */}
+                        <div className="relative">
+                            <button
+                                onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                                className="p-2 rounded-full transition-colors bg-theme-surface text-theme-text hover:bg-theme-accent/50 flex items-center justify-center"
+                                aria-label="Switch Language"
+                            >
+                                <Globe size={20} />
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            {isLangMenuOpen && (
+                                <>
+                                    <div className="fixed inset-0 z-40" onClick={() => setIsLangMenuOpen(false)}></div>
+                                    <div className="absolute right-0 mt-2 w-32 rounded-xl bg-theme-bg/95 backdrop-blur-xl border border-theme-accent/20 shadow-lg shadow-black/10 py-2 z-50 animate-fade-in origin-top-right">
+                                        <button
+                                            onClick={() => switchLocale('en')}
+                                            className={`w-full text-left px-4 py-2 text-sm font-subheading transition-colors hover:bg-theme-surface ${locale === 'en' ? 'text-theme-highlight font-bold' : 'text-theme-text'}`}
+                                        >
+                                            {tLang('en')}
+                                        </button>
+                                        <button
+                                            onClick={() => switchLocale('hi')}
+                                            className={`w-full text-left px-4 py-2 text-sm font-subheading transition-colors hover:bg-theme-surface ${locale === 'hi' ? 'text-theme-highlight font-bold' : 'text-theme-text'}`}
+                                        >
+                                            {tLang('hi')}
+                                        </button>
+                                        <button
+                                            onClick={() => switchLocale('te')}
+                                            className={`w-full text-left px-4 py-2 text-sm font-subheading transition-colors hover:bg-theme-surface ${locale === 'te' ? 'text-theme-highlight font-bold' : 'text-theme-text'}`}
+                                        >
+                                            {tLang('te')}
+                                        </button>
+                                    </div>
+                                </>
+                            )}
+                        </div>
 
                         {/* Mobile Menu Button */}
                         <button

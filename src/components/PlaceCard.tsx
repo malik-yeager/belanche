@@ -1,6 +1,7 @@
 import React from 'react';
 import { Camera, CalendarDays, BookOpen } from 'lucide-react';
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import type { Place } from '../data/mockData';
 
 interface PlaceCardProps {
@@ -8,8 +9,15 @@ interface PlaceCardProps {
 }
 
 const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
+    const locale = useLocale();
+
+    // Determine the translated literal for "Day" or "Days" manually
+    // We could use next-intl plurals but for simplicity we map directly
+    const dayText = locale === 'hi' ? 'दिन' : locale === 'te' ? 'రోజులు' : (place.duration === 1 ? 'Day' : 'Days');
+    const readPostText = locale === 'hi' ? 'पोस्ट पढ़ें' : locale === 'te' ? 'పోస్ట్ చదవండి' : 'Read the Post';
+
     return (
-        <Link href={`/place/${place.id}`} className="group block w-full bg-theme-surface shadow-[0_8px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_56px_rgba(0,0,0,0.15)] transition-all duration-300 transform hover:-translate-y-1 font-sans cursor-pointer">
+        <Link href={`/${locale}/place/${place.id}`} className="group block w-full bg-theme-surface shadow-[0_8px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_16px_56px_rgba(0,0,0,0.15)] transition-all duration-300 transform hover:-translate-y-1 font-sans cursor-pointer">
 
             {/* IMAGE */}
             <div className="overflow-hidden w-full h-[320px]">
@@ -44,14 +52,14 @@ const PlaceCard: React.FC<PlaceCardProps> = ({ place }) => {
 
                     <div className="flex items-center gap-[5px]">
                         <CalendarDays className="w-[13px] h-[13px] stroke-theme-text/40 shrink-0" />
-                        <span>{place.duration} {place.duration === 1 ? 'Day' : 'Days'}</span>
+                        <span>{place.duration} {dayText}</span>
                     </div>
 
                     <div className="w-[1px] h-[14px] bg-theme-text/20 mx-[14px] hidden sm:block"></div>
 
                     <div className="flex items-center gap-[5px] text-[0.72rem] tracking-[0.12em] uppercase text-theme-text underline underline-offset-[3px] transition-colors duration-200 hover:text-theme-text/60">
                         <BookOpen className="w-[13px] h-[13px] stroke-theme-text transition-colors duration-200" />
-                        Read the Post
+                        {readPostText}
                     </div>
                 </div>
             </div>
