@@ -1,6 +1,6 @@
 import React from 'react';
 import TopBar from '../components/TopBar';
-import WaveBackground from '../components/WaveBackground';
+import Newsletter from '../components/Newsletter';
 
 const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
@@ -10,8 +10,7 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 {children}
             </main>
 
-            {/* Wave SVG Background - Only on Homepage */}
-            <WaveBackground />
+            <Newsletter />
 
             <footer className="py-3 mt-auto bg-theme-wave transition-colors duration-300 relative z-10">
                 <div className="text-center text-sm opacity-80 text-white">

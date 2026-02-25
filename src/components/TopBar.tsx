@@ -3,7 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { User, Map, Mail, Sun, Moon } from 'lucide-react';
+import { User, Map, Mail, Sun, Moon, Instagram, Twitter } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { TriplogSVG } from './TriplogSVG';
 
@@ -21,7 +21,6 @@ const TopBar: React.FC = () => {
     const navItems = [
         { name: 'About Me', path: '/about', icon: <User size={18} /> },
         { name: 'My Travels', path: '/travels', icon: <Map size={18} /> },
-        { name: 'Contact Me', path: '/contact', icon: <Mail size={18} /> },
     ];
 
     const handleLinkClick = (e: React.MouseEvent, closeMobile?: boolean) => {
@@ -35,13 +34,13 @@ const TopBar: React.FC = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 w-full backdrop-blur-md border-b transition-colors duration-300 bg-theme-topbar/90 border-theme-accent/50">
+        <nav className="sticky top-0 z-[100] w-full backdrop-blur-md border-b transition-colors duration-300 bg-theme-topbar/95 border-theme-accent/50 shadow-sm shadow-black/5">
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-20">
                     {/* Logo / Brand */}
                     <div className="flex-shrink-0 flex items-center">
                         <Link href="/" className="flex items-center gap-2 text-xl font-bold transition-colors text-theme-highlight hover:opacity-80">
-                            <img src="/triplog.webp" alt="Triplog" className="w-auto" />
+                            <img src="/triplog.png" alt="Triplog" className="h-40 w-auto" />
                         </Link>
                     </div>
 
@@ -55,7 +54,7 @@ const TopBar: React.FC = () => {
                                         key={item.name}
                                         href={item.path}
                                         onClick={handleLinkClick}
-                                        className={`group relative flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 overflow-hidden
+                                        className={`group relative flex items-center gap-2 px-3 py-2 rounded-md text-[1.1rem] font-subheading font-semibold transition-colors duration-200 overflow-hidden
                                         ${isActive
                                                 ? 'bg-theme-surface text-theme-text shadow-sm'
                                                 : 'text-theme-text/70 hover:text-theme-highlight hover:bg-theme-surface/50'
@@ -81,6 +80,28 @@ const TopBar: React.FC = () => {
                                     </Link>
                                 );
                             })}
+                        </div>
+
+                        {/* Social Links */}
+                        <div className="hidden sm:flex items-center gap-2 mr-2 border-r border-theme-text/20 pr-4">
+                            <a
+                                href="https://instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 transition-colors text-theme-text/70 hover:text-theme-highlight hover:bg-theme-surface/50 rounded-full"
+                                aria-label="Instagram"
+                            >
+                                <Instagram size={18} />
+                            </a>
+                            <a
+                                href="https://twitter.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 transition-colors text-theme-text/70 hover:text-theme-highlight hover:bg-theme-surface/50 rounded-full"
+                                aria-label="Twitter (X)"
+                            >
+                                <Twitter size={18} />
+                            </a>
                         </div>
 
                         {/* Theme Toggle */}
@@ -133,7 +154,7 @@ const TopBar: React.FC = () => {
                                 <Link
                                     href={item.path}
                                     onClick={(e) => handleLinkClick(e, true)}
-                                    className={`relative flex items-center gap-4 w-full px-6 py-2 text-base font-medium overflow-hidden
+                                    className={`relative flex items-center gap-4 w-full px-6 py-2 text-lg font-subheading font-semibold overflow-hidden
                                         transition-all duration-200 active:bg-theme-surface/70 border-y border-theme-text/10
                                         ${isActive
                                             ? 'bg-theme-surface text-theme-highlight'

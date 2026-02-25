@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", system-ui, sans-serif;
+  --font-sans: var(--font-lato, "Lato"), system-ui, sans-serif;
+  --font-heading: var(--font-playfair, "Playfair Display"), serif;
+  --font-subheading: var(--font-cormorant, "Cormorant Garamond"), serif;
 
   /* Define custom colors mapping to CSS variables */
   --color-theme-bg: var(--bg-main);
@@ -29,13 +31,13 @@
 /* Base Variables - Light Mode Default */
 :root {
   /* Refined warm & calm */
-  --bg-main: #F5EFE6;
-  --bg-surface: #E8DFCA;
+  --bg-main: #FFFFFF;
+  --bg-surface: #ececec;
   --bg-topbar: #F5EFE6;
-  --text-main: #3A5F8A;
-  --text-highlight: #6D94C5;
-  --accent: #CBDCEB;
-  --wave: #6D94C5;
+  --text-main: #505050;
+  --text-highlight: #C9C5B1;
+  --accent: #EDE8D0;
+  --wave: #C9C5B1;
   --logo-color: #000000;
 
   /* Standard properties */
@@ -49,8 +51,8 @@
   --bg-main: #574964;
   --bg-surface: #9F8383;
   --bg-topbar: #574964;
-  --text-main: #FFDAB3;
-  --text-highlight: #C8AAAA;
+  --text-main: #EDE8D0;
+  --text-highlight: #C9C5B1;
   --accent: #C8AAAA;
   --wave: #3D3346;
   --logo-color: #FFFFFF;

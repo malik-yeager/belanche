@@ -21,10 +21,10 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
     if (!place) {
         return (
             <div className="flex flex-col items-center justify-center min-h-[60vh]">
-                <h2 className="text-2xl font-bold text-theme-text mb-4">Place not found</h2>
+                <h2 className="text-2xl font-heading font-bold text-theme-text mb-4">Place not found</h2>
                 <button
                     onClick={() => router.push('/')}
-                    className="flex items-center px-6 py-3 bg-theme-text text-theme-bg rounded-full hover:bg-theme-main transition-colors"
+                    className="hidden md:flex items-center px-6 py-3 font-sans bg-theme-text text-theme-bg rounded-full hover:bg-theme-main transition-colors"
                 >
                     <ArrowLeft size={20} className="mr-2" />
                     Back to Home
@@ -44,12 +44,12 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
             <div className="container mx-auto px-4 w-full mb-8">
                 <button
                     onClick={() => router.push('/')}
-                    className="flex items-center text-theme-text/70 hover:text-theme-text mb-6 transition-colors"
+                    className="hidden md:flex items-center font-sans text-theme-text/70 hover:text-theme-text mb-6 transition-colors"
                 >
                     <ArrowLeft size={20} className="mr-2" />
                     Back to Home
                 </button>
-                <h1 className="text-4xl md:text-6xl font-black text-theme-text tracking-tight mb-6">{place.title}</h1>
+                <h1 className="text-4xl md:text-6xl font-heading font-black text-theme-text tracking-tight mb-6">{place.title}</h1>
             </div>
 
             <div className="container mx-auto px-4 w-full">
@@ -64,13 +64,13 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                         <div className="min-h-[400px]">
 
                             {activeTab === 'overview' && (
-                                <div className="prose prose-lg dark:prose-invert max-w-none animate-fade-in">
-                                    <h3 className="text-2xl font-bold mb-4 text-theme-text">About the Trip</h3>
+                                <div className="prose prose-lg dark:prose-invert font-sans max-w-none animate-fade-in">
+                                    <h3 className="text-2xl font-subheading font-bold mb-4 text-theme-text">About the Trip</h3>
                                     <p className="text-theme-text/90 leading-relaxed mb-8">
                                         {place.overview}
                                     </p>
                                     <div className="bg-theme-surface/50 p-6 rounded-xl border border-theme-accent/30">
-                                        <h4 className="text-xl font-bold mb-3 text-theme-text">Quick Summary</h4>
+                                        <h4 className="text-xl font-subheading font-bold mb-3 text-theme-text">Quick Summary</h4>
                                         <p className="text-theme-text/80">
                                             {place.description}
                                         </p>
@@ -84,10 +84,10 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                                         place.itinerary.map((day) => (
                                             <div key={day.day} className="border-b border-theme-accent/20 pb-12 last:border-0">
                                                 <div className="flex items-center gap-3 mb-6">
-                                                    <span className="text-4xl font-black text-theme-highlight/80 dark:text-theme-highlight/60 drop-shadow-sm">
+                                                    <span className="text-4xl font-heading font-black text-theme-highlight/80 dark:text-theme-highlight/60 drop-shadow-sm">
                                                         {day.day < 10 ? `0${day.day}` : day.day}
                                                     </span>
-                                                    <h3 className="text-2xl font-bold text-theme-text">{day.title}</h3>
+                                                    <h3 className="text-2xl font-subheading font-bold text-theme-text">{day.title}</h3>
                                                 </div>
 
                                                 <p className="text-theme-text/90 text-lg leading-relaxed whitespace-pre-line prose dark:prose-invert mb-8">
@@ -114,7 +114,7 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                                                 {place.highlights.map((highlight, idx) => (
                                                     <li key={idx} className="flex items-center bg-theme-bg p-4 rounded-xl border border-theme-accent/30">
                                                         <MapPin size={20} className="text-theme-highlight mr-3 flex-shrink-0" />
-                                                        <span className="text-theme-text font-medium">{highlight}</span>
+                                                        <span className="text-theme-text font-medium font-sans">{highlight}</span>
                                                     </li>
                                                 ))}
                                             </ul>
@@ -125,14 +125,14 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
 
                             {activeTab === 'things' && (
                                 <div className="animate-fade-in">
-                                    <h3 className="text-2xl font-bold mb-6 text-theme-text">Things to Take Care Of</h3>
+                                    <h3 className="text-2xl font-subheading font-bold mb-6 text-theme-text">Things to Take Care Of</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                         {place.thingsToTake.map((thing, idx) => (
                                             <div key={idx} className="flex items-start py-2 text-theme-text group">
                                                 <span className="mt-2 mr-4 flex-shrink-0 text-theme-highlight">
                                                     <div className="w-2 h-2 rounded-full bg-theme-highlight"></div>
                                                 </span>
-                                                <span className="font-medium text-lg leading-relaxed">{thing}</span>
+                                                <span className="font-medium font-sans text-lg leading-relaxed">{thing}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -159,9 +159,9 @@ const PlaceDetailsClient: React.FC<{ id: string, placeData?: Place }> = ({ id, p
                                     </div>
                                 </div>
 
-                                <h4 className="text-2xl font-black text-theme-text mb-1 flex items-center gap-2 justify-center">
+                                <h4 className="text-2xl font-heading font-black text-theme-text mb-1 flex flex-wrap items-center gap-2 justify-center">
                                     Shaik
-                                    <em className="text-theme-highlight text-2xl not-italic font-serif italic font-light">
+                                    <em className="text-theme-highlight text-3xl not-italic font-subheading italic font-light">
                                         Malikbaba
                                     </em>
                                 </h4>
