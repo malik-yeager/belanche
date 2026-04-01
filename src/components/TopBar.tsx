@@ -53,7 +53,11 @@ const TopBar: React.FC = () => {
                     {/* Logo / Brand */}
                     <div className="flex-shrink-0 flex items-center">
                         <Link href={`/${locale}`} className="flex items-center gap-2 text-xl font-bold transition-colors text-theme-highlight hover:opacity-80">
-                            <img src="/triplog.png" alt="Triplog" className="h-40 w-auto" />
+                            {mounted && theme === 'dark' ? (
+                                <img src="/dark-mode.png" alt="Triplog" className="h-40 w-auto" />
+                            ) : (
+                                <img src="/triplog.png" alt="Triplog" className="h-40 w-auto" />
+                            )}
                         </Link>
                     </div>
 
